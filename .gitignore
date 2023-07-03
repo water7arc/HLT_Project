@@ -1,2 +1,4 @@
 .vscode
 *.txt
+./.vscode/
+./my_awesome_qa_model/
