@@ -2,3 +2,13 @@
 *.txt
 ./.vscode/
 ./my_awesome_qa_model/
+my_awesome_qa_model/checkpoint-500/config.json
+my_awesome_qa_model/checkpoint-500/optimizer.pt
+my_awesome_qa_model/checkpoint-500/pytorch_model.bin
+my_awesome_qa_model/checkpoint-500/rng_state.pth
+my_awesome_qa_model/checkpoint-500/scheduler.pt
+my_awesome_qa_model/checkpoint-500/special_tokens_map.json
+my_awesome_qa_model/checkpoint-500/tokenizer_config.json
+my_awesome_qa_model/checkpoint-500/tokenizer.json
+my_awesome_qa_model/checkpoint-500/trainer_state.json
+my_awesome_qa_model/checkpoint-500/training_args.bin
