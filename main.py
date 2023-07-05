@@ -5,17 +5,18 @@ from transformers import DefaultDataCollator
 from transformers import AutoModelForSeq2SeqLM, TrainingArguments, Trainer
 from MyDataset import MyDataset
 
+
 squad = load_dataset("squad", split="train[:100]")
 squad = squad.train_test_split(test_size=0.2, shuffle=True, seed=42)
 
 # tokenizer = AutoTokenizer.from_pretrained("t5-small")
 # model = AutoModelForSeq2SeqLM.from_pretrained("t5-small")
 
-# tokenizer = AutoTokenizer.from_pretrained("google/t5-v1_1-small")
-# model = AutoModelForSeq2SeqLM.from_pretrained("google/t5-v1_1-small")
+tokenizer = AutoTokenizer.from_pretrained("google/t5-v1_1-small")
+model = AutoModelForSeq2SeqLM.from_pretrained("google/t5-v1_1-small")
 
-tokenizer = AutoTokenizer.from_pretrained("models/t5-fine_tune-overfit/checkpoint-2000")
-model = AutoModelForSeq2SeqLM.from_pretrained("models/t5-fine_tune-overfit/checkpoint-2000")
+# tokenizer = AutoTokenizer.from_pretrained("models/t5-fine_tune-overfit/checkpoint-2000")
+# model = AutoModelForSeq2SeqLM.from_pretrained("models/t5-fine_tune-overfit/checkpoint-2000")
 
 # def preprocess_function(examples):
 #     questions = [q.strip() for q in examples["question"]]
@@ -66,12 +67,13 @@ training_args = TrainingArguments(
     output_dir="models/t5-fine_tune-overfit/",
     evaluation_strategy="epoch",
     learning_rate=2e-3,
-    per_device_train_batch_size=2,
-    per_device_eval_batch_size=2,
+    per_device_train_batch_size=1,
+    per_device_eval_batch_size=1,
     num_train_epochs=50,
     weight_decay=0.001,
     push_to_hub=False,
-    report_to=["wandb"]
+    report_to=["wandb"],
+    # no_cuda=True,
 )
 
 trainer = Trainer(
