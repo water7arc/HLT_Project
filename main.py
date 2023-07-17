@@ -12,8 +12,8 @@ squad = squad.train_test_split(test_size=0.2, shuffle=True, seed=42)
 # tokenizer = AutoTokenizer.from_pretrained("t5-small")
 # model = AutoModelForSeq2SeqLM.from_pretrained("t5-small")
 
-tokenizer = AutoTokenizer.from_pretrained("google/t5-v1_1-small")
-model = AutoModelForSeq2SeqLM.from_pretrained("google/t5-v1_1-small")
+tokenizer = AutoTokenizer.from_pretrained       ("./models/checkpoint-10000")
+model = AutoModelForSeq2SeqLM.from_pretrained   ("./models/checkpoint-10000")
 
 # tokenizer = AutoTokenizer.from_pretrained("models/t5-fine_tune-overfit/checkpoint-2000")
 # model = AutoModelForSeq2SeqLM.from_pretrained("models/t5-fine_tune-overfit/checkpoint-2000")
@@ -55,10 +55,22 @@ model = AutoModelForSeq2SeqLM.from_pretrained("google/t5-v1_1-small")
 
 tokenized_squad_train = MyDataset(squad["train"], tokenizer)
 tokenized_squad_val = MyDataset(squad["test"], tokenizer)
-# text = tokenizer.decode(tokenized_squad["train"][0]["input_ids"])
-# print(text)
-# question = tokenizer.decode(tokenized_squad["train"][0]["labels"])
-# print(question)
+
+
+for i in range(len(squad["train"])):
+    tokenized_in = tokenized_squad_train[i:i+1]
+    tokenized_in["labels"][tokenized_in["labels"] == -100] = tokenizer.pad_token_id
+    output = model.generate(
+        tokenized_in['input_ids'], 
+        num_beams=2, 
+        max_length=200,
+        decoder_start_token_id=tokenizer.pad_token_id
+    )
+    decoded_output = tokenizer.batch_decode(output, skip_special_tokens=False)
+    print(squad["train"][i]["context"])
+    print(squad["train"][i]["answers"]["text"])
+    print(decoded_output)
+    print(squad["train"][i]["question"])
 
 
 data_collator = DefaultDataCollator()
