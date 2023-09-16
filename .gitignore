@@ -4,3 +4,4 @@
 models/*
 wandb/*
 __pycache__
+kaggle
