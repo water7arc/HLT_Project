@@ -12,8 +12,8 @@ class MyDataset(Dataset):
         answer_end = answer_start + len(self.data[index]["answers"]["text"][0])
         new_context = context[:answer_start] + \
                       "</s>" + context[answer_start:answer_end] + \
-                      "</s>" + context[answer_end:] + \
-                      "</s>" + self.data[index]["answers"]["text"][0]
+                      "</s>" + context[answer_end:] 
+                    #   "</s>" + self.data[index]["answers"]["text"][0]   # experiment
 
         tokenized_in = self.tokenizer(
             new_context,
