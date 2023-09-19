@@ -8,8 +8,8 @@ from MyDataset import MyDataset
 
 squad = load_dataset("squad")
 
-tokenizer = AutoTokenizer.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/t5-base-kaggle/checkpoint-12000")
-model = AutoModelForSeq2SeqLM.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/t5-base-kaggle/checkpoint-12000")
+tokenizer = AutoTokenizer.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/t5-large/checkpoint-1000")
+model = AutoModelForSeq2SeqLM.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/t5-large/checkpoint-1000")
 
 tokenized_squad_train = MyDataset(squad["train"], tokenizer)
 tokenized_squad_val = MyDataset(squad["validation"], tokenizer)

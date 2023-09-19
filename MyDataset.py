@@ -8,17 +8,14 @@ class MyDataset(Dataset):
 
     def __getitem__(self, index):
         context = self.data[index]["context"]
-        answer_start = self.data[index]["answers"]["answer_start"][0]
-        answer_end = answer_start + len(self.data[index]["answers"]["text"][0])
-        new_context = context[:answer_start] + \
-                      "</s>" + context[answer_start:answer_end] + \
-                      "</s>" + context[answer_end:] 
-                    #   "</s>" + self.data[index]["answers"]["text"][0]   # experiment
+        # answer_start = self.data[index]["answers"]["answer_start"][0]
+        # answer_end = answer_start + len(self.data[index]["answers"]["text"][0])
+        new_context = "</s>" + self.data[index]["answers"]["text"][0] + context 
 
         tokenized_in = self.tokenizer(
             new_context,
             text_target=self.data[index]["question"],
-            max_length=384,
+            max_length=256,
             truncation="only_first",
             padding="max_length",
             return_tensors="pt",
