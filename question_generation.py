@@ -1,13 +1,8 @@
-import torch
 from datasets import load_dataset
 from transformers import AutoTokenizer
 from transformers import DefaultDataCollator
 from transformers import AutoModelForSeq2SeqLM, TrainingArguments, Trainer, EarlyStoppingCallback
-from MyDataset import MyDataset
-
-# import tensorflow as tf
-# tf.config.gpu.set_per_process_memory_fraction (0.50)                  │
-# tf.config.gpu.set_per_process_memory_growth (True)
+from MyDataset import MyDataset_question_generation
 
 
 squad = load_dataset("squad")
@@ -15,14 +10,14 @@ squad = load_dataset("squad")
 tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-small")
 model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-small")
 
-tokenized_squad_train = MyDataset(squad["train"], tokenizer)
-tokenized_squad_val = MyDataset(squad["validation"], tokenizer)
+tokenized_squad_train = MyDataset_question_generation(squad["train"], tokenizer)
+tokenized_squad_val = MyDataset_question_generation(squad["validation"], tokenizer)
 
 
 data_collator = DefaultDataCollator()
 
 training_args = TrainingArguments(
-    output_dir="models/t5-small_answer_begin_bigbatch",
+    output_dir="models/t5-small",
     evaluation_strategy="steps",
     learning_rate=1e-3,
     lr_scheduler_type="cosine",
