@@ -12,8 +12,8 @@ from MyDataset import MyDataset
 
 squad = load_dataset("squad")
 
-tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-base")
-model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-base")
+tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-small")
+model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-small")
 
 tokenized_squad_train = MyDataset(squad["train"], tokenizer)
 tokenized_squad_val = MyDataset(squad["validation"], tokenizer)
@@ -22,12 +22,12 @@ tokenized_squad_val = MyDataset(squad["validation"], tokenizer)
 data_collator = DefaultDataCollator()
 
 training_args = TrainingArguments(
-    output_dir="models/t5-base_answer_begin",
+    output_dir="models/t5-small_answer_begin_bigbatch",
     evaluation_strategy="steps",
-    learning_rate=1e-4,
+    learning_rate=1e-3,
     lr_scheduler_type="cosine",
-    per_device_train_batch_size=8,
-    per_device_eval_batch_size=8,
+    per_device_train_batch_size=14,
+    per_device_eval_batch_size=14,
     num_train_epochs=50,
     push_to_hub=False,
     report_to=["wandb"],
