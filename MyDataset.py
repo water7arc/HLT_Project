@@ -75,16 +75,18 @@ class MyDataset_answer_generation_qa(Dataset):
         start_char = answer["answer_start"][0]
         end_char = answer["answer_start"][0] + len(answer["text"][0])
 
-        context_end = torch.count_nonzero(tokenized_in["attention_mask"]) - 1
+        context_end = torch.count_nonzero(tokenized_in["attention_mask"]).item() - 2
 
         # If the answer is not fully inside the context, label it (0, 0)
-        if offset[0][0] > end_char or offset[context_end][1] < start_char:
+        if offset[0, 0] > end_char or offset[context_end, 1] < start_char:
+            print(offset[0, 0])
+            print(offset[context_end, 1])
             start_position = 0
             end_position = 0
         else:
             # Otherwise it's the start and end token positions
             idx = 0
-            while idx <= context_end and offset[idx][0] <= start_char:
+            while idx <= context_end and offset[idx, 0] <= start_char:
                 idx += 1
             start_position = idx - 1
 
@@ -93,8 +95,10 @@ class MyDataset_answer_generation_qa(Dataset):
                 idx -= 1
             end_position = idx + 1
 
-        tokenized_in["start_positions"] = [start_position]
-        tokenized_in["end_positions"] = [end_position]
+        tokenized_in["start_positions"] = start_position
+        tokenized_in["end_positions"] = end_position
+        tokenized_in["input_ids"] = tokenized_in["input_ids"][0]
+        tokenized_in["attention_mask"] = tokenized_in["attention_mask"][0]
         return tokenized_in
 
     def __len__(self):

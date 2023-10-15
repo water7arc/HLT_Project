@@ -5,3 +5,4 @@ models/*
 wandb/*
 __pycache__
 kaggle
+hf_cache
