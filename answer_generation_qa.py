@@ -4,7 +4,6 @@ from transformers import DefaultDataCollator
 from transformers import AutoModelForQuestionAnswering, TrainingArguments, Trainer, EarlyStoppingCallback
 from MyDataset import MyDataset_answer_generation_qa
 
-
 squad = load_dataset("squad")
 
 tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-small")
@@ -17,9 +16,9 @@ tokenized_squad_val = MyDataset_answer_generation_qa(squad["validation"], tokeni
 data_collator = DefaultDataCollator()
 
 training_args = TrainingArguments(
-    output_dir="models/t5-small_asnwergen_qa",
+    output_dir="models/bert-base_answergen_qa",
     evaluation_strategy="steps",
-    learning_rate=1e-4,
+    learning_rate=5e-6,
     lr_scheduler_type="cosine",
     per_device_train_batch_size=20,
     per_device_eval_batch_size=20,

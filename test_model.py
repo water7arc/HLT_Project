@@ -24,9 +24,12 @@ for i in range(len(squad["validation"])):
     print(decoded_output)
     print(squad["validation"][i]["question"])
 
+    context=[squad["validation"][i]["context"]]
+    answer=[squad["validation"][i]["answers"]["text"][0]]
+
     results = rqugescore.compute(generated_questions=decoded_output,
-                                 contexts=squad["validation"][i]["context"],
-                                 answers=squad["validation"][i]["answers"]["text"])
+                                 contexts=context,
+                                 answers=answer)
 
     print(results["mean_score"])
     print()

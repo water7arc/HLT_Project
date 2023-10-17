@@ -1,0 +1,84 @@
+Found cached dataset squad (/storagenfs/m.tolloso/.cache/huggingface/datasets/squad/plain_text/1.0.0/d6ec3ceb99ca480ce37cdd35555d6cb2511d223b9150cce08a837ef62ffea453)
+  0%|          | 0/2 [00:00<?, ?it/s]100%|██████████| 2/2 [00:00<00:00, 204.24it/s]
+Traceback (most recent call last):
+  File "/storagenfs/m.tolloso/HLT_Project/answer_generation_qa.py", line 11, in <module>
+    model = AutoModelForQuestionAnswering.from_pretrained("google/flan-t5-small")
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 487, in from_pretrained
+    raise ValueError(
+ValueError: Unrecognized configuration class <class 'transformers.models.t5.configuration_t5.T5Config'> for this kind of AutoModel: AutoModelForQuestionAnswering.
+Model type should be one of AlbertConfig, BartConfig, BertConfig, BigBirdConfig, BigBirdPegasusConfig, BloomConfig, CamembertConfig, CanineConfig, ConvBertConfig, Data2VecTextConfig, DebertaConfig, DebertaV2Config, DistilBertConfig, ElectraConfig, ErnieConfig, ErnieMConfig, FlaubertConfig, FNetConfig, FunnelConfig, GPT2Config, GPTNeoConfig, GPTNeoXConfig, GPTJConfig, IBertConfig, LayoutLMv2Config, LayoutLMv3Config, LEDConfig, LiltConfig, LongformerConfig, LukeConfig, LxmertConfig, MarkupLMConfig, MBartConfig, MegaConfig, MegatronBertConfig, MobileBertConfig, MPNetConfig, MvpConfig, NezhaConfig, NystromformerConfig, OPTConfig, QDQBertConfig, ReformerConfig, RemBertConfig, RobertaConfig, RobertaPreLayerNormConfig, RoCBertConfig, RoFormerConfig, SplinterConfig, SqueezeBertConfig, XLMConfig, XLMRobertaConfig, XLMRobertaXLConfig, XLNetConfig, XmodConfig, YosoConfig.
+Found cached dataset squad (/storagenfs/m.tolloso/.cache/huggingface/datasets/squad/plain_text/1.0.0/d6ec3ceb99ca480ce37cdd35555d6cb2511d223b9150cce08a837ef62ffea453)
+  0%|          | 0/2 [00:00<?, ?it/s]100%|██████████| 2/2 [00:00<00:00, 419.58it/s]
+Traceback (most recent call last):
+  File "/storagenfs/m.tolloso/HLT_Project/answer_generation_qa.py", line 11, in <module>
+    model = AutoModelForQuestionAnswering.from_pretrained("google/flan-t5-small")
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 487, in from_pretrained
+    raise ValueError(
+ValueError: Unrecognized configuration class <class 'transformers.models.t5.configuration_t5.T5Config'> for this kind of AutoModel: AutoModelForQuestionAnswering.
+Model type should be one of AlbertConfig, BartConfig, BertConfig, BigBirdConfig, BigBirdPegasusConfig, BloomConfig, CamembertConfig, CanineConfig, ConvBertConfig, Data2VecTextConfig, DebertaConfig, DebertaV2Config, DistilBertConfig, ElectraConfig, ErnieConfig, ErnieMConfig, FlaubertConfig, FNetConfig, FunnelConfig, GPT2Config, GPTNeoConfig, GPTNeoXConfig, GPTJConfig, IBertConfig, LayoutLMv2Config, LayoutLMv3Config, LEDConfig, LiltConfig, LongformerConfig, LukeConfig, LxmertConfig, MarkupLMConfig, MBartConfig, MegaConfig, MegatronBertConfig, MobileBertConfig, MPNetConfig, MvpConfig, NezhaConfig, NystromformerConfig, OPTConfig, QDQBertConfig, ReformerConfig, RemBertConfig, RobertaConfig, RobertaPreLayerNormConfig, RoCBertConfig, RoFormerConfig, SplinterConfig, SqueezeBertConfig, XLMConfig, XLMRobertaConfig, XLMRobertaXLConfig, XLNetConfig, XmodConfig, YosoConfig.
+Found cached dataset squad (/storagenfs/m.tolloso/.cache/huggingface/datasets/squad/plain_text/1.0.0/d6ec3ceb99ca480ce37cdd35555d6cb2511d223b9150cce08a837ef62ffea453)
+  0%|          | 0/2 [00:00<?, ?it/s]100%|██████████| 2/2 [00:00<00:00, 166.34it/s]
+Downloading (…)okenizer_config.json:   0%|          | 0.00/28.0 [00:00<?, ?B/s]Downloading (…)okenizer_config.json: 100%|██████████| 28.0/28.0 [00:00<00:00, 115kB/s]
+Downloading (…)lve/main/config.json:   0%|          | 0.00/570 [00:00<?, ?B/s]Downloading (…)lve/main/config.json: 100%|██████████| 570/570 [00:00<00:00, 2.22MB/s]
+Downloading (…)solve/main/vocab.txt:   0%|          | 0.00/232k [00:00<?, ?B/s]Downloading (…)solve/main/vocab.txt: 100%|██████████| 232k/232k [00:00<00:00, 1.14MB/s]Downloading (…)solve/main/vocab.txt: 100%|██████████| 232k/232k [00:00<00:00, 1.13MB/s]
+Downloading (…)/main/tokenizer.json:   0%|          | 0.00/466k [00:00<?, ?B/s]Downloading (…)/main/tokenizer.json: 100%|██████████| 466k/466k [00:00<00:00, 2.29MB/s]Downloading (…)/main/tokenizer.json: 100%|██████████| 466k/466k [00:00<00:00, 2.28MB/s]
+Downloading model.safetensors:   0%|          | 0.00/440M [00:00<?, ?B/s]Downloading model.safetensors:   2%|▏         | 10.5M/440M [00:00<00:17, 24.1MB/s]Downloading model.safetensors:   5%|▍         | 21.0M/440M [00:00<00:17, 24.6MB/s]Downloading model.safetensors:   7%|▋         | 31.5M/440M [00:01<00:16, 24.9MB/s]Downloading model.safetensors:  10%|▉         | 41.9M/440M [00:01<00:15, 25.2MB/s]Downloading model.safetensors:  12%|█▏        | 52.4M/440M [00:02<00:15, 25.3MB/s]Downloading model.safetensors:  14%|█▍        | 62.9M/440M [00:02<00:14, 25.3MB/s]Downloading model.safetensors:  17%|█▋        | 73.4M/440M [00:02<00:14, 25.3MB/s]Downloading model.safetensors:  19%|█▉        | 83.9M/440M [00:03<00:14, 25.3MB/s]Downloading model.safetensors:  21%|██▏       | 94.4M/440M [00:03<00:13, 25.3MB/s]Downloading model.safetensors:  24%|██▍       | 105M/440M [00:04<00:14, 23.9MB/s] Downloading model.safetensors:  26%|██▌       | 115M/440M [00:04<00:13, 24.2MB/s]Downloading model.safetensors:  29%|██▊       | 126M/440M [00:05<00:12, 24.5MB/s]Downloading model.safetensors:  31%|███       | 136M/440M [00:05<00:12, 24.7MB/s]Downloading model.safetensors:  33%|███▎      | 147M/440M [00:05<00:11, 24.9MB/s]Downloading model.safetensors:  36%|███▌      | 157M/440M [00:06<00:11, 25.0MB/s]Downloading model.safetensors:  38%|███▊      | 168M/440M [00:06<00:10, 25.2MB/s]Downloading model.safetensors:  40%|████      | 178M/440M [00:07<00:10, 25.2MB/s]Downloading model.safetensors:  43%|████▎     | 189M/440M [00:07<00:09, 25.3MB/s]Downloading model.safetensors:  45%|████▌     | 199M/440M [00:07<00:09, 25.4MB/s]Downloading model.safetensors:  48%|████▊     | 210M/440M [00:08<00:09, 25.4MB/s]Downloading model.safetensors:  50%|████▉     | 220M/440M [00:08<00:08, 25.2MB/s]Downloading model.safetensors:  52%|█████▏    | 231M/440M [00:09<00:08, 25.3MB/s]Downloading model.safetensors:  55%|█████▍    | 241M/440M [00:09<00:07, 25.0MB/s]Downloading model.safetensors:  57%|█████▋    | 252M/440M [00:10<00:07, 25.1MB/s]Downloading model.safetensors:  60%|█████▉    | 262M/440M [00:10<00:07, 25.2MB/s]Downloading model.safetensors:  62%|██████▏   | 273M/440M [00:10<00:06, 25.3MB/s]Downloading model.safetensors:  64%|██████▍   | 283M/440M [00:11<00:06, 25.4MB/s]Downloading model.safetensors:  67%|██████▋   | 294M/440M [00:11<00:05, 25.4MB/s]Downloading model.safetensors:  69%|██████▉   | 304M/440M [00:12<00:05, 25.4MB/s]Downloading model.safetensors:  71%|███████▏  | 315M/440M [00:12<00:04, 25.2MB/s]Downloading model.safetensors:  74%|███████▍  | 325M/440M [00:12<00:04, 25.2MB/s]Downloading model.safetensors:  76%|███████▌  | 336M/440M [00:13<00:04, 25.4MB/s]Downloading model.safetensors:  79%|███████▊  | 346M/440M [00:13<00:03, 25.4MB/s]Downloading model.safetensors:  81%|████████  | 357M/440M [00:14<00:03, 25.3MB/s]Downloading model.safetensors:  83%|████████▎ | 367M/440M [00:14<00:02, 25.4MB/s]Downloading model.safetensors:  86%|████████▌ | 377M/440M [00:15<00:02, 25.4MB/s]Downloading model.safetensors:  88%|████████▊ | 388M/440M [00:15<00:02, 25.2MB/s]Downloading model.safetensors:  90%|█████████ | 398M/440M [00:15<00:01, 25.3MB/s]Downloading model.safetensors:  93%|█████████▎| 409M/440M [00:16<00:01, 25.4MB/s]Downloading model.safetensors:  95%|█████████▌| 419M/440M [00:16<00:00, 25.5MB/s]Downloading model.safetensors:  98%|█████████▊| 430M/440M [00:17<00:00, 25.4MB/s]Downloading model.safetensors: 100%|█████████▉| 440M/440M [00:17<00:00, 25.3MB/s]Downloading model.safetensors: 100%|██████████| 440M/440M [00:17<00:00, 25.1MB/s]
+Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForQuestionAnswering: ['cls.predictions.transform.dense.bias', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.dense.weight']
+- This IS expected if you are initializing BertForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForQuestionAnswering were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/transformers/optimization.py:411: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
+  warnings.warn(
+wandb: Currently logged in as: matteotolloso (rocks-core). Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.15.12 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.10
+wandb: Run data is saved locally in /storagenfs/m.tolloso/HLT_Project/wandb/run-20231017_161740-5gpdic8h
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run fallen-yogurt-116
+wandb: ⭐️ View project at https://wandb.ai/rocks-core/huggingface
+wandb: 🚀 View run at https://wandb.ai/rocks-core/huggingface/runs/5gpdic8h
+  0%|          | 0/219000 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/storagenfs/m.tolloso/HLT_Project/answer_generation_qa.py", line 46, in <module>
+    trainer.train()
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/transformers/trainer.py", line 1645, in train
+    return inner_training_loop(
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/transformers/trainer.py", line 1938, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs)
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/transformers/trainer.py", line 2759, in training_step
+    loss = self.compute_loss(model, inputs)
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/transformers/trainer.py", line 2784, in compute_loss
+    outputs = model(**inputs)
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 1848, in forward
+    outputs = self.bert(
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 1020, in forward
+    encoder_outputs = self.encoder(
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 610, in forward
+    layer_outputs = layer_module(
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 495, in forward
+    self_attention_outputs = self.attention(
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 425, in forward
+    self_outputs = self.self(
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 306, in forward
+    key_layer = self.transpose_for_scores(self.key(hidden_states))
+  File "/storagenfs/m.tolloso/miniconda3/envs/hlt/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 272, in transpose_for_scores
+    return x.permute(0, 2, 1, 3)
+RuntimeError: permute(sparse_coo): number of dimensions in the tensor input does not match the length of the desired ordering of dimensions i.e. input.dim() = 5 is not equal to len(dims) = 4
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+wandb: - 0.010 MB of 0.010 MB uploaded (0.000 MB deduped)wandb: \ 0.010 MB of 0.010 MB uploaded (0.000 MB deduped)wandb: | 0.010 MB of 0.010 MB uploaded (0.000 MB deduped)wandb: / 0.010 MB of 0.010 MB uploaded (0.000 MB deduped)wandb: - 0.010 MB of 0.010 MB uploaded (0.000 MB deduped)wandb: 🚀 View run fallen-yogurt-116 at: https://wandb.ai/rocks-core/huggingface/runs/5gpdic8h
+wandb: ️⚡ View job at https://wandb.ai/rocks-core/huggingface/jobs/QXJ0aWZhY3RDb2xsZWN0aW9uOjEwNzQ2MzI5Mg==/version_details/v0
+wandb: Synced 6 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20231017_161740-5gpdic8h/logs
