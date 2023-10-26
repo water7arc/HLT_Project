@@ -8,8 +8,6 @@ class MyDataset_question_generation(Dataset):
 
     def __getitem__(self, index):
         context = self.data[index]["context"]
-        # answer_start = self.data[index]["answers"]["answer_start"][0]
-        # answer_end = answer_start + len(self.data[index]["answers"]["text"][0])
         new_context = self.data[index]["answers"]["text"][0] + "</s>" +  context 
 
         tokenized_in = self.tokenizer(
@@ -79,8 +77,8 @@ class MyDataset_answer_generation_qa(Dataset):
 
         # If the answer is not fully inside the context, label it (0, 0)
         if offset[0, 0] > end_char or offset[context_end, 1] < start_char:
-            print(offset[0, 0])
-            print(offset[context_end, 1])
+            # print(offset[0, 0])
+            # print(offset[context_end, 1])
             start_position = 0
             end_position = 0
         else:
@@ -99,6 +97,7 @@ class MyDataset_answer_generation_qa(Dataset):
         tokenized_in["end_positions"] = end_position
         tokenized_in["input_ids"] = tokenized_in["input_ids"][0]
         tokenized_in["attention_mask"] = tokenized_in["attention_mask"][0]
+        tokenized_in.pop("token_type_ids")
         return tokenized_in
 
     def __len__(self):
