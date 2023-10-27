@@ -7,3 +7,4 @@ __pycache__
 kaggle
 hf_cache
 question_generation.log
+question_generationIT.log

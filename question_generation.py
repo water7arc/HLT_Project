@@ -7,25 +7,27 @@ import os
 import torch
 import wandb
 
-squad = load_dataset("qg_squad")
+squad = load_dataset("squad_it")
+
 model_name = "google/mt5-small"
-run = wandb.init(name='mt5_squad_qg')
+run = wandb.init(name='mt5_IT_qg', project="huggingface")
+
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForSeq2SeqLM.from_pretrained(model_name,load_in_8bit=False)
 
 tokenized_squad_train = MyDataset_question_generation(squad["train"], tokenizer)
-tokenized_squad_val = MyDataset_question_generation(squad["validation"], tokenizer)
+tokenized_squad_val = MyDataset_question_generation(squad["test"], tokenizer)
 
 
 data_collator = DefaultDataCollator()
 
 training_args = TrainingArguments(
-    output_dir="models/mt5-small",
+    output_dir="models/mt5-small_IT",
     evaluation_strategy="steps",
     learning_rate=1e-3,
     lr_scheduler_type="cosine",
-    per_device_train_batch_size=8,
-    per_device_eval_batch_size=8,
+    per_device_train_batch_size=6,
+    per_device_eval_batch_size=6,
     num_train_epochs=50,
     push_to_hub=False,
     report_to=["wandb"],
