@@ -12,11 +12,11 @@ contexts = set()
 for item in squad['validation']:
     contexts.add(item['context'])
 
-tokenizer_ag = AutoTokenizer.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/google/flan-t5-base_answergen_qa/checkpoint-8000")
-model_ag = AutoModelForQuestionAnswering.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/google/flan-t5-base_answergen_qa/checkpoint-8000")
+tokenizer_ag = AutoTokenizer.from_pretrained('/storagenfs/m.tolloso/HLT_Project/models/t5-small_asnwergen_short/checkpoint-5000')
+model_ag = AutoModelForSeq2SeqLM.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/t5-small_asnwergen_short/checkpoint-5000")
 
-tokenizer_qg = AutoTokenizer.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/t5-base_answer_begin/checkpoint-3000")
-model_qg = AutoModelForSeq2SeqLM.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/t5-base_answer_begin/checkpoint-3000")
+tokenizer_qg = AutoTokenizer.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/t5_qg_pretrainedSquad2/checkpoint-7000")
+model_qg = AutoModelForSeq2SeqLM.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/t5_qg_pretrainedSquad2/checkpoint-7000")
 
 
 for context in contexts:
