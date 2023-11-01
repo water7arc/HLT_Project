@@ -12,12 +12,15 @@ squad = load_dataset("squad")
 contexts = set()
 for item in squad['validation']:
     contexts.add(item['context'])
+    
+Answer_Gen_Model = "/storagenfs/m.tolloso/HLT_Project/models/flan-t5-base_answergen_qa/checkpoint-8000"
+Question_Gen_Model = "/storagenfs/p.magos/HLT_Project/models/mt5-small/checkpoint-20000"
 
-tokenizer_ag = AutoTokenizer.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/google/flan-t5-base_answergen_qa/checkpoint-8000")
-model_ag = AutoModelForQuestionAnswering.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/google/flan-t5-base_answergen_qa/checkpoint-8000")
+tokenizer_ag = AutoTokenizer.from_pretrained(Answer_Gen_Model)
+model_ag = AutoModelForQuestionAnswering.from_pretrained(Answer_Gen_Model)
 
-tokenizer_qg = AutoTokenizer.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/t5-base_answer_begin/checkpoint-3000")
-model_qg = AutoModelForSeq2SeqLM.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/t5-base_answer_begin/checkpoint-3000")
+tokenizer_qg = AutoTokenizer.from_pretrained(Question_Gen_Model)
+model_qg = AutoModelForSeq2SeqLM.from_pretrained(Question_Gen_Model)
 
 rqugescore = load("alirezamsh/rquge")
 
