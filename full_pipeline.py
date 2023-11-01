@@ -8,9 +8,20 @@ from transformers import AutoModelForQuestionAnswering
 
 
 squad = load_dataset("squad")
+squad_it = load_dataset("squad_it")
+
 contexts = set()
 for item in squad['validation']:
     contexts.add(item['context'])
+    
+contexts_it = set()
+for item in squad_it['test']:
+    contexts_it.add(item['context'])
+
+PATH = "/storagenfs/m.tolloso/HLT_Project/models/"
+qg_models = {"model": ""}
+
+
 
 tokenizer_ag = AutoTokenizer.from_pretrained('/storagenfs/m.tolloso/HLT_Project/models/t5-small_asnwergen_short/checkpoint-5000')
 model_ag = AutoModelForSeq2SeqLM.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/t5-small_asnwergen_short/checkpoint-5000")

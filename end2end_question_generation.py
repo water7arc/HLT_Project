@@ -3,12 +3,15 @@ from transformers import AutoTokenizer
 from transformers import DefaultDataCollator
 from transformers import AutoModelForSeq2SeqLM, TrainingArguments, Trainer, EarlyStoppingCallback
 from MyDataset import MyDataset_e2e_question_generation
+import wandb
+
+wandb.init(name="t5-tiny", project="huggingface")
 
 
 squad = load_dataset("squad")
 
-tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-small")
-model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-small")
+tokenizer = AutoTokenizer.from_pretrained("google/t5-efficient-tiny")
+model = AutoModelForSeq2SeqLM.from_pretrained("google/t5-efficient-tiny")
 
 tokenized_squad_train = MyDataset_e2e_question_generation(squad["train"], tokenizer)
 tokenized_squad_val = MyDataset_e2e_question_generation(squad["validation"], tokenizer)
@@ -16,13 +19,13 @@ tokenized_squad_val = MyDataset_e2e_question_generation(squad["validation"], tok
 
 data_collator = DefaultDataCollator()
 
-training_args = TrainingArguments(
-    output_dir="models/t5-small_e2e",
+training_args = TrainingArguments(  
+    output_dir="models/t5-tiny",
     evaluation_strategy="steps",
-    learning_rate=1e-3,
+    learning_rate=1e-4,
     lr_scheduler_type="cosine",
-    per_device_train_batch_size=14,
-    per_device_eval_batch_size=14,
+    per_device_train_batch_size=40,
+    per_device_eval_batch_size=40,
     num_train_epochs=50,
     push_to_hub=False,
     report_to=["wandb"],
