@@ -8,11 +8,12 @@ class MyDataset_question_generation(Dataset):
         self.tokenizer = tokenizer
 
     def __getitem__(self, index):
-        context = self.data[index]["context"]
-        new_context = self.data[index]["answers"]["text"][0] + "</s>" +  context 
+        contexts = self.data[index]["context"]
+        answers = self.data[index]["answers"]
+        new_contexts = [answer["text"][0] + "</s>" +  context for context, answer in zip(contexts, answers)] 
 
         tokenized_in = self.tokenizer(
-            new_context,
+            new_contexts,
             text_target=self.data[index]["question"],
             max_length=256,
             truncation="only_first",
@@ -20,8 +21,12 @@ class MyDataset_question_generation(Dataset):
             return_tensors="pt",
         )
         tokenized_in["labels"][tokenized_in["labels"] == self.tokenizer.pad_token_id] = -100
-        return {"input_ids": tokenized_in["input_ids"][0], "labels": tokenized_in["labels"][0],
-                "attention_mask": tokenized_in["attention_mask"][0]}
+        if type(index) == int:
+            return {"input_ids": tokenized_in["input_ids"][0], "labels": tokenized_in["labels"][0],
+                    "attention_mask": tokenized_in["attention_mask"][0]}
+        else:
+            return {"input_ids": tokenized_in["input_ids"], "labels": tokenized_in["labels"],
+                    "attention_mask": tokenized_in["attention_mask"]}
 
     def __len__(self):
         return len(self.data)
@@ -33,21 +38,25 @@ class MyDataset_answer_generation(Dataset):
         self.tokenizer = tokenizer
 
     def __getitem__(self, index):
-        context = self.data[index]["context"]
-        # answer_start = self.data[index]["answers"]["answer_start"][0]
-        # answer_end = answer_start + len(self.data[index]["answers"]["text"][0])
+        contexts = self.data[index]["context"]
+        answers = [a["text"][0] for a in self.data[index]["answers"]]
 
         tokenized_in = self.tokenizer(
-            context,
-            text_target=self.data[index]["answers"]["text"][0],
+            contexts,
+            text_target=answers,
             max_length=256,
             truncation="only_first",
             padding="max_length",
             return_tensors="pt",
         )
         tokenized_in["labels"][tokenized_in["labels"] == self.tokenizer.pad_token_id] = -100
-        return {"input_ids": tokenized_in["input_ids"][0], "labels": tokenized_in["labels"][0],
-                "attention_mask": tokenized_in["attention_mask"][0]}
+
+        if type(index) == int:
+            return {"input_ids": tokenized_in["input_ids"][0], "labels": tokenized_in["labels"][0],
+                    "attention_mask": tokenized_in["attention_mask"][0]}
+        else:
+            return {"input_ids": tokenized_in["input_ids"], "labels": tokenized_in["labels"],
+                    "attention_mask": tokenized_in["attention_mask"]}
 
     def __len__(self):
         return len(self.data)
@@ -137,19 +146,28 @@ class MyDataset_e2e_question_generation(Dataset):
         self.tokenizer = tokenizer
 
     def __getitem__(self, index):
-        context = self.data[index]["context"]
+        contexts = self.data[index]["context"]
+        answers = self.data[index]["answers"]
+
+        questions = self.data[index]["question"]
+        question_anwers = [q + "</s>" + a for (q, a) in zip(questions, answers)]
 
         tokenized_in = self.tokenizer(
-            context,
-            text_target=self.data[index]["question"],
+            contexts,
+            text_target=question_anwers,
             max_length=256,
             truncation="only_first",
             padding="max_length",
             return_tensors="pt",
         )
         tokenized_in["labels"][tokenized_in["labels"] == self.tokenizer.pad_token_id] = -100
-        return {"input_ids": tokenized_in["input_ids"][0], "labels": tokenized_in["labels"][0],
-                "attention_mask": tokenized_in["attention_mask"][0]}
+
+        if type(index) == int:
+            return {"input_ids": tokenized_in["input_ids"][0], "labels": tokenized_in["labels"][0],
+                    "attention_mask": tokenized_in["attention_mask"][0]}
+        else:
+            return {"input_ids": tokenized_in["input_ids"], "labels": tokenized_in["labels"],
+                    "attention_mask": tokenized_in["attention_mask"]}
 
     def __len__(self):
         return len(self.data)

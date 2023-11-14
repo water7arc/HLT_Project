@@ -5,13 +5,13 @@ from transformers import AutoModelForSeq2SeqLM, TrainingArguments, Trainer, Earl
 from MyDataset import MyDataset_e2e_question_generation
 import wandb
 
-wandb.init(name="t5-tiny", project="huggingface")
+wandb.init(name="t5-small-e2e", project="huggingface")
 
 
 squad = load_dataset("squad")
 
-tokenizer = AutoTokenizer.from_pretrained("google/t5-efficient-tiny")
-model = AutoModelForSeq2SeqLM.from_pretrained("google/t5-efficient-tiny")
+tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-small")
+model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-small")
 
 tokenized_squad_train = MyDataset_e2e_question_generation(squad["train"], tokenizer)
 tokenized_squad_val = MyDataset_e2e_question_generation(squad["validation"], tokenizer)
@@ -20,7 +20,7 @@ tokenized_squad_val = MyDataset_e2e_question_generation(squad["validation"], tok
 data_collator = DefaultDataCollator()
 
 training_args = TrainingArguments(  
-    output_dir="models/t5-tiny",
+    output_dir="models/t5-small-e2e",
     evaluation_strategy="steps",
     learning_rate=1e-4,
     lr_scheduler_type="cosine",
