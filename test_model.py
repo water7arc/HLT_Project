@@ -6,8 +6,8 @@ from evaluate import load
 
 squad = load_dataset("squad")
 
-tokenizer = AutoTokenizer.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/t5-large/checkpoint-1000")
-model = AutoModelForSeq2SeqLM.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/t5-large/checkpoint-1000")
+tokenizer = AutoTokenizer.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/QuestionGen/t5-base_answer_begin")
+model = AutoModelForSeq2SeqLM.from_pretrained("/storagenfs/m.tolloso/HLT_Project/models/QuestionGen/t5-base_answer_begin")
 
 tokenized_squad_train = MyDataset_question_generation(squad["train"], tokenizer)
 tokenized_squad_val = MyDataset_question_generation(squad["validation"], tokenizer)

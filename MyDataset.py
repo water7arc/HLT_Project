@@ -146,15 +146,15 @@ class MyDataset_e2e_question_generation(Dataset):
         self.tokenizer = tokenizer
 
     def __getitem__(self, index):
-        contexts = self.data[index]["context"]
-        answers = self.data[index]["answers"]
+        context = self.data[index]["context"]
+        answer = self.data[index]["answers"]["text"][0]
 
-        questions = self.data[index]["question"]
-        question_anwers = [q + "</s>" + a for (q, a) in zip(questions, answers)]
+        question = self.data[index]["question"]
+        question_anwer = question + " " + answer
 
         tokenized_in = self.tokenizer(
-            contexts,
-            text_target=question_anwers,
+            context,
+            text_target=question_anwer,
             max_length=256,
             truncation="only_first",
             padding="max_length",
