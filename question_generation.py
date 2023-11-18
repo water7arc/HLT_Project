@@ -1,24 +1,24 @@
 from datasets import load_dataset
 from transformers import AutoTokenizer
 from transformers import DefaultDataCollator
-from transformers import AutoModelForSeq2SeqLM, TrainingArguments, Trainer, EarlyStoppingCallback
-from MyDataset import MyDataset_question_generation
+from transformers import AutoModelForCausalLM, TrainingArguments, Trainer, EarlyStoppingCallback
+from MyDataset import MyDataset_question_generationGPT2
 import wandb
 
 squad = load_dataset("squad")
 
-model_name = "allenai/t5-small-squad2-question-generation"
-run_name = "t5_small_qg"
+model_name = "gpt2"
+run_name = "gpt2"
 path_name = "models/" + run_name
 prj_name = "huggingface"
 
 run = wandb.init(name=run_name, project=prj_name)
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(model_name)
 
-tokenized_squad_train = MyDataset_question_generation(squad["train"], tokenizer)
-tokenized_squad_val = MyDataset_question_generation(squad["validation"], tokenizer)
+tokenized_squad_train = MyDataset_question_generationGPT2(squad["train"], tokenizer)
+tokenized_squad_val = MyDataset_question_generationGPT2(squad["validation"], tokenizer)
 
 
 data_collator = DefaultDataCollator()
@@ -38,6 +38,8 @@ training_args = TrainingArguments(
     metric_for_best_model="eval_loss",
     greater_is_better=False,
     load_best_model_at_end = True,
+    use_mps_device=True,
+    optim= "adamw_torch",
     # no_cuda=True,
 )
 
